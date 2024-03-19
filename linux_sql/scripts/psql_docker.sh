@@ -19,8 +19,8 @@ case $cmd in
 
   # Check if the container is already created
   if [ $container_status -eq 0 ]; then
-	echo 'Container already exists'
-	exit 1
+    echo 'Container already exists'
+    exit 1
   fi
 
 
@@ -56,3 +56,4 @@ case $cmd in
   exit 1
   ;;
 esac
+
