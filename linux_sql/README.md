@@ -36,13 +36,13 @@ bash> crontab -e
 Implemented the project by creating a Docker container for the PostgreSQL database and multiple bash scripts to handle gathering system data and storing system data in the database. Used crontab to automate system data collection. 
 
 ## Architecture
-![Alt text](assets\Architecture.png "Architecture")
-
+![Architecture](./assets/Architecture.png "Architecture")
 
 ## Scripts
 ```
 - psql_docker.sh: Starts a PostgreSQL instance using Docker.
 - host_info.sh: Collects hardware information from each node and inserts it into the database. This script is run once at installation time.
+
 - host_usage.sh: Collects real-time hardware usage data (CPU and memory) and inserts it into the database. 
 - crontab: used to schedule host_usage.sh to run at regular intervals.
 ```
