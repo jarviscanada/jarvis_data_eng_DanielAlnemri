@@ -1,8 +1,7 @@
 # Linux Cluster Monitoring Agent
 
 # Introduction
-(about 100-150 words)
-Discuss the design of the project. What does this project/product do? Who are the users? What are the technologies you have used? (e.g. bash, docker, git, etc..)
+The Linux Cluster Monitoring Agent is a tool aimed at system administrators and developers for monitoring hardware usage and specifications across Linux servers. It employs bash scripting for data collection, Docker for database containerization, and PostgreSQL for data storage. The agent gathers and stores metrics such as CPU and memory usage, disk I/O, and hardware specs, facilitating analysis for performance optimization and ensuring the smooth operation of the cluster.
 
 # Quick Start
 ```
@@ -34,9 +33,11 @@ bash> crontab -e
 ```
 
 # Implemenation
-Discuss how you implement the project.
+Implemented the project by creating a Docker container for the PostgreSQL database and multiple bash scripts to handle gathering system data and storing system data in the database. Used crontab to automate system data collection. 
+
 ## Architecture
-Draw a cluster diagram with three Linux hosts, a DB, and agents (use draw.io website). Image must be saved to the `assets` directory.
+![Alt text](assets\Architecture.png "Architecture")
+
 
 ## Scripts
 ```
