@@ -32,7 +32,7 @@ bash> crontab -e
 * * * * * bash path_to_project/scripts/host_usage.sh localhost port host_agent postgres password > /tmp/host_usage.log
 ```
 
-# Implemenation
+# Implementation
 Implemented the project by creating a Docker container for the PostgreSQL database and multiple bash scripts to handle gathering system data and storing system data in the database. Used crontab to automate system data collection. 
 
 ## Architecture
@@ -47,38 +47,38 @@ Implemented the project by creating a Docker container for the PostgreSQL databa
 - crontab: used to schedule host_usage.sh to run at regular intervals.
 ```
 
-## Database Modeling
-| host_info        |           |
+## Database Modelling
+| host_info        |           |
 |------------------|-----------|
-| id               | SERIAL    |
-| hostname         | VARCHAR   |
-| cpu_number       | INT2      |
-| cpu_architecture | VARCHAR   |
-| cpu_model        | VARCHAR   |
-| cpu_mhz          | FLOAT8    |
-| l2_cache         | INT4      |
-| "timestamp"      | TIMESTAMP |
-| total_mem        | INT4      |
+| id               | SERIAL    |
+| hostname         | VARCHAR   |
+| cpu_number       | INT2      |
+| cpu_architecture | VARCHAR   |
+| cpu_model        | VARCHAR   |
+| cpu_mhz          | FLOAT8    |
+| l2_cache         | INT4      |
+| "timestamp"      | TIMESTAMP |
+| total_mem        | INT4      |
 
-| host_usage      |           |
+| host_usage      |           |
 |-----------------|-----------|
-| "timestamp"     | TIMESTAMP |
-| host_id         | SERIAL    |
-| memory_free     | INT4      |
-| cpu_idle        | INT2      |
-| cpu_kernel      | INT2      |
-| disk_io         | INT4      |
-| disk_available  | INT4      |
+| "timestamp"     | TIMESTAMP |
+| host_id         | SERIAL    |
+| memory_free     | INT4      |
+| cpu_idle        | INT2      |
+| cpu_kernel      | INT2      |
+| disk_io         | INT4      |
+| disk_available  | INT4      |
 
 
 # Test
 - All scripts were run using ```bash -x script_name.sh``` to insure all data was correct when testing script functions, validating all script functions and variables. 
-- All SQL queries were tested in isolation outside of script usage, verifying correct creation of tables and retieval of data input/retrieval.
+- All SQL queries were tested in isolation outside of script usage, verifying correct creation of tables and retrieval of data input/retrieval.
 
 # Deployment
 The project was deployed by running a local PostgreSQL container using docker and setting up regular execution intervals of the host_usage.sh script using crontab.
 
 # Improvements
-- Combine host-info.sh and host_usage.sh into one script who's functionality is based on it's arguments
+- Combine host-info.sh and host_usage.sh into one script whose functionality is based on its arguments
 - Host the PostgreSQL container on the cloud to real cluster functionality, as right now only the system running the container can access it.
 - Set up automatic start up of interval execution in the case the system reboots. 
